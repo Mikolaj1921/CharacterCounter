@@ -10,9 +10,10 @@ html, body {
   background-repeat: repeat;
   display: flex;
   width: 100%;
-  height: 1200px;
+  height: 100%;
   justify-content: center;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  padding: 0px 0px 50px;
 }
 
 .App{
@@ -57,12 +58,12 @@ html, body {
   justify-self: center;
 }
 
+/*input area*/
 .input-area {
   display: flex;
   width: 100%; 
   height: 240px;
 }
-
 
 .text-input {
   border-radius: 10px;
@@ -75,7 +76,6 @@ html, body {
 
 .text-input:focus {
   outline: none;
-  color: #c0c0c0;
 }
 
 .text-input::placeholder {
@@ -95,9 +95,11 @@ html, body {
 }
 
 
+/*output area information about total-chr,word-count,sent-count*/
 .output-area{
   display: grid;
   width: 100%;
+  height: 100%;
   grid-template-columns: 31% 31% 31%;
   gap: 3.5%;
   justify-content: center;
@@ -109,7 +111,6 @@ html, body {
     color: rgba(0, 0, 0, 0.874);
   padding: 0px 15px;
   display: flex;
-  
 }
 
 .output-area h2{
@@ -120,9 +121,9 @@ html, body {
 
 .output-area p{
   align-items: center;
-  font-size: clamp(3rem, 9vw,3.8rem);
-  font-weight: 600;
-  transform: scaleX(1.25);
+  font-size: clamp(3rem, 9vw,3.4rem);
+  font-weight: 700;
+  transform: scale(1.15);  
   transform-origin: left;
 }
 
@@ -144,11 +145,45 @@ html, body {
   background-color: rgb(255, 139, 100);
 }
 
-
+/*density letter*/
 .letter-density h2{
   font-size: 1.4rem;
   font-weight: 500;
 }
+
+.letter-density-item{
+  display: grid;
+  width: 100%;
+  align-items: center;
+  grid-template-columns: 5% 77.5% 7.5% 10%;
+  margin-bottom: 10px;
+}
+
+.letter-density-item span{
+  text-align: start;
+}
+
+.letter-density-item span:nth-last-of-type(2){
+  text-align: end;
+  padding-right: 5px;
+}
+
+/*percent container*/
+.lvl-container {
+  width: 100%; 
+  height: 12.5px;
+  background-color: #22212c; 
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex; 
+}
+
+.lvl-bar {
+  background-color: rgb(255, 167, 255);
+  transition: width 0.3s ease-in-out;
+  height: 100%; 
+}
+
 
 
 /*respons*/
@@ -195,16 +230,34 @@ html, body {
 
 @media (max-width: 700px){
   .output-area{
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 47.5% 47.5%;
+    padding: 0px 0px 15px;
   }
   .sentence-count { 
     grid-column: 1 / -1; 
   }
+  .letter-density-item{
+    justify-self: center;
+    width: 92.5%;
+    margin-right: 20px;
+  }
+  
 }
 
 @media (max-width: 480px){
   .output-area{
     grid-template-columns: 100%;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
+    padding: 0px 0px 40px;
   }
+
+  .letter-density-item{
+    justify-self: center;
+    width: 90%;
+    grid-template-columns: 5% 65% 5% 10%;
+    gap: 2.5%;
+  }
+
+
+
 }

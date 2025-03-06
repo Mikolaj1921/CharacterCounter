@@ -31,8 +31,37 @@ function App() {
   const ReadingTimeDisplay = readingTime.toFixed(1) + ' min read'; // вивід час читання (ск. до 1 знаку)
   
 
-  
+  //letter density
+  const letterDensity = {}; // об'єкт для зберігання кількості кожної літери
+  text.toUpperCase().split('').forEach((letter) => { // перетворення тексту в верхный регістр і розбиття на символи
+    if (/[A-Z]/.test(letter)) {
+      if (letter in letterDensity) {
+        letterDensity[letter] += 1;
+      } else {
+        letterDensity[letter] = 1;
+      }
+    }
+  });
 
+  // Обчислення загальної кількості літер
+  const totalLetters = Object.values(letterDensity).reduce((sum, count) => sum + count, 0);
+
+  // Обчислення і додавання відсотків до кожної літери
+  const letterDensityWithPercent = {};
+  Object.entries(letterDensity).forEach(([letter, count]) => {
+    const percentage = totalLetters > 0 ? ((count / totalLetters) * 100).toFixed(2) + '%' : '0%';
+    letterDensityWithPercent[letter] = { count, percentage };
+  });
+
+  // Відображення відсотків в шкалі
+  const percentageLevel = (percentage , letter) => {
+    return (
+      <div className="lvl-container">
+        <div className="lvl-bar" style={{ width: percentage }}></div>
+      </div>
+    );
+  };
+  
   return (
     <div className='App'>
       <header className="App-header">
@@ -76,8 +105,25 @@ function App() {
             </div>
           </div>
 
+          {/*letter density*/}
           <div className='letter-density'>
-            <h2> Letter Density: </h2>
+            <h2>Letter Density:</h2>
+            {Object.keys(letterDensityWithPercent).length > 0 ? (
+              <div>
+                {Object.entries(letterDensityWithPercent)
+                  .sort()
+                  .map(([letter, { count, percentage }]) => (
+                    <div key={letter} className="letter-density-item">
+                      <span>{letter}</span>
+                      <span> {percentageLevel(percentage)}</span>
+                      <span>{count} </span>
+                      <span>({percentage})</span> 
+                    </div>
+                  ))}
+              </div>
+            ) : (
+              <p>No characters found. Start typing to see letter density.</p>
+            )}
           </div>
 
         </section>
