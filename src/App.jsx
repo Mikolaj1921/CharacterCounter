@@ -1,8 +1,37 @@
-import React from 'react'
+import {useState} from 'react'
 import './App.css'
 
 function App() {
-  //const [count, setCount] = useState(0)
+  const [text, setText] = useState(''); // text state
+
+  // event.target - <textarea> element
+  // Функція для обробки зміни тексту
+  const handleTextChange = (event) => {
+    const newText = event.target.value; // новий текст
+    if(newText.length <= 9999){
+      setText(newText); // оновити текст (limit 9999 characters)
+    }
+  }
+  const characterCount = text.length; // word count
+
+  //word count (метода фільтр видаляє порожні слова і звертає улементи які виконують умову)
+  // і з цього ми отримуємо кількість слів
+  const wordCount = text.split(' ').filter((word) => word !== '').length;
+
+  //sentence count
+  //sentence.trim().length > 0 - видаляє (пробіли) на початку і в кінці речення 
+  const sentenceCount = text
+  .split(/[.!?]+/) // розділяє текст на речення
+  .filter((sentence) => sentence && sentence.trim().length > 0 && /^[A-Z]/.test(sentence.trim()))
+  .length;
+
+  //reading time
+  const wordsPerMinute = 200; // середня швидкість читання в хвилину
+  const readingTime = wordCount / wordsPerMinute; // час читання в хвилинах
+  const ReadingTimeDisplay = readingTime.toFixed(1) + ' min read'; // вивід час читання (ск. до 1 знаку)
+  
+
+  
 
   return (
     <div className='App'>
@@ -22,27 +51,27 @@ function App() {
           {/*input text area*/}
           <div className='input-area'>
             <textarea
-              /*value={text}*/
+              value={text}
               className='text-input'
-              /*onChange={handleTextChange}*/
+              onChange={handleTextChange}
               placeholder='Start typing here... (or paste your text)'
             ></textarea>
           </div>
           <div className='Approx_reading-time'>
-            <h3>Approx. Reading time:</h3>
+            <h3>Approx. Reading time: {ReadingTimeDisplay}</h3>
           </div>
           {/*output text area*/}
           <div className='output-area'>
             <div className='total-chr'>
-              <p>00</p>
+              <p>{characterCount}</p>
               <h2>Total Characters</h2>
             </div>
             <div className='word-count'>
-              <p>00</p>
+              <p>{wordCount}</p>
               <h2>Word Count</h2>
             </div>
             <div className='sentence-count'>
-              <p>00</p>
+              <p>{sentenceCount}</p>
               <h2>Sentence Count</h2> 
             </div>
           </div>

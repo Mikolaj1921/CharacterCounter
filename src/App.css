@@ -101,12 +101,15 @@ html, body {
   grid-template-columns: 31% 31% 31%;
   gap: 3.5%;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .output-area p,.output-area h2{
     color: rgba(0, 0, 0, 0.874);
   padding: 0px 15px;
   display: flex;
+  
 }
 
 .output-area h2{
@@ -130,6 +133,7 @@ html, body {
   height: 145px;
   background-color: rgb(255, 167, 255);
   border-radius: 10px;
+  overflow: hidden;
 }
 
 .word-count{
