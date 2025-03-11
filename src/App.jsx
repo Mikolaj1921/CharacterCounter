@@ -74,7 +74,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div className="logo"></div>
+        <div className="logo"></div>ffdsdfsd
         <h1>Character Counter</h1>
       </header>
 
