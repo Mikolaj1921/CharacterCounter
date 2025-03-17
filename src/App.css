@@ -1,31 +1,41 @@
 /*root elements*/
-html, body {
-  overflow-x: hidden; 
+html,
+body {
+  overflow-x: hidden;
 }
 
 #root {
   background-color: #100f1b;
-  background-image: 
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%25' viewBox='0 0 200 200'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%25' viewBox='0 0 200 200'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
   background-repeat: repeat;
   display: flex;
   width: 100%;
   height: 100%;
   justify-content: center;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
   padding: 0px 0px 50px;
 }
 
-.App{
+.App {
   display: flex;
   flex-direction: column;
   width: 65%;
   height: 100%;
 }
 
-
 /*header*/
-.App-header{
+.App-header {
   display: flex;
   width: 100%;
   margin-top: 5px;
@@ -43,15 +53,14 @@ html, body {
   margin-right: 5px;
 }
 
-.App-header h1{
+.App-header h1 {
   font-size: clamp(1.2rem, 4.5vw, 1.4rem);
   font-weight: 500;
   align-content: center;
 }
 
-
 /*main*/
-.Title-area h1{
+.Title-area h1 {
   text-align: center;
   font-size: clamp(2.2rem, 8vw, 3rem);
   width: 45%;
@@ -61,7 +70,7 @@ html, body {
 /*input area*/
 .input-area {
   display: flex;
-  width: 100%; 
+  width: 100%;
   height: 240px;
 }
 
@@ -71,7 +80,7 @@ html, body {
   border: none;
   padding: 15px 12.5px;
   resize: none;
-  width: 100%; 
+  width: 100%;
 }
 
 .text-input:focus {
@@ -82,21 +91,20 @@ html, body {
   color: #c0c0c0;
 }
 
-.Approx_reading-time{
+.Approx_reading-time {
   justify-self: end;
   margin-bottom: 30px;
 }
 
-.Approx_reading-time h3{
+.Approx_reading-time h3 {
   font-size: 0.9rem;
   word-spacing: 2px;
   font-weight: 500;
-   color: #c0c0c0;
+  color: #c0c0c0;
 }
 
-
 /*output area information about total-chr,word-count,sent-count*/
-.output-area{
+.output-area {
   display: grid;
   width: 100%;
   height: 100%;
@@ -107,27 +115,30 @@ html, body {
   overflow: hidden;
 }
 
-.output-area p,.output-area h2{
-    color: rgba(0, 0, 0, 0.874);
+.output-area p,
+.output-area h2 {
+  color: rgba(0, 0, 0, 0.874);
   padding: 0px 15px;
   display: flex;
 }
 
-.output-area h2{
+.output-area h2 {
   align-items: end;
   font-size: clamp(1.1rem, 4.5vw, 1.3rem);
   font-weight: 500;
 }
 
-.output-area p{
+.output-area p {
   align-items: center;
-  font-size: clamp(3rem, 9vw,3.4rem);
+  font-size: clamp(3rem, 9vw, 3.4rem);
   font-weight: 700;
-  transform: scale(1.15);  
+  transform: scale(1.15);
   transform-origin: left;
 }
 
-.total-chr,.word-count,.sentence-count{
+.total-chr,
+.word-count,
+.sentence-count {
   display: grid;
   grid-template-rows: 50% 50%;
   width: 100%;
@@ -137,21 +148,21 @@ html, body {
   overflow: hidden;
 }
 
-.word-count{
+.word-count {
   background-color: rgb(255, 162, 0);
 }
 
-.sentence-count{
+.sentence-count {
   background-color: rgb(255, 139, 100);
 }
 
 /*density letter*/
-.letter-density h2{
+.letter-density h2 {
   font-size: 1.4rem;
   font-weight: 500;
 }
 
-.letter-density-item{
+.letter-density-item {
   display: grid;
   width: 100%;
   align-items: center;
@@ -159,105 +170,96 @@ html, body {
   margin-bottom: 10px;
 }
 
-.letter-density-item span{
+.letter-density-item span {
   text-align: start;
 }
 
-.letter-density-item span:nth-last-of-type(2){
+.letter-density-item span:nth-last-of-type(2) {
   text-align: end;
   padding-right: 5px;
 }
 
 /*percent container*/
 .lvl-container {
-  width: 100%; 
+  width: 100%;
   height: 12.5px;
-  background-color: #22212c; 
+  background-color: #22212c;
   border-radius: 5px;
   overflow: hidden;
-  display: flex; 
+  display: flex;
 }
 
 .lvl-bar {
   background-color: rgb(255, 167, 255);
   transition: width 0.3s ease-in-out;
-  height: 100%; 
+  height: 100%;
 }
 
-
-
 /*respons*/
-@media (max-width: 1200px){
-  .App{
+@media (max-width: 1200px) {
+  .App {
     width: 75%;
   }
 
-  .Title-area h1{
+  .Title-area h1 {
     width: 60%;
   }
 }
 
-
-@media (max-width: 900px){
-  body{
+@media (max-width: 900px) {
+  body {
     width: 100%;
   }
 
-  .App{
+  .App {
     width: 80%;
   }
 
-  .Title-area h1{
+  .Title-area h1 {
     width: 70%;
   }
 }
 
-
-@media (max-width: 768px){
-  body{
+@media (max-width: 768px) {
+  body {
     width: 100%;
   }
 
-  .App{
+  .App {
     width: 90%;
   }
 
-  .Title-area h1{
+  .Title-area h1 {
     width: 80%;
   }
 }
 
-
-@media (max-width: 700px){
-  .output-area{
+@media (max-width: 700px) {
+  .output-area {
     grid-template-columns: 47.5% 47.5%;
     padding: 0px 0px 15px;
   }
-  .sentence-count { 
-    grid-column: 1 / -1; 
+  .sentence-count {
+    grid-column: 1 / -1;
   }
-  .letter-density-item{
+  .letter-density-item {
     justify-self: center;
     width: 92.5%;
     margin-right: 20px;
   }
-  
 }
 
-@media (max-width: 480px){
-  .output-area{
+@media (max-width: 480px) {
+  .output-area {
     grid-template-columns: 100%;
     margin-bottom: 20px;
     padding: 0px 0px 40px;
   }
 
-  .letter-density-item{
+  .letter-density-item {
     justify-self: center;
     width: 90%;
     grid-template-columns: 5% 65% 5% 10%;
     gap: 2.5%;
   }
-
-
-
 }
